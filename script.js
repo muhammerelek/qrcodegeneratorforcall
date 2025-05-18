@@ -1,9 +1,18 @@
 function generateQR() {
-  const phone = document.getElementById('phone').value.trim();
-  const data = `tel:${phone}`;
+  const countryCode = document.getElementById('country-code').value;
+  const phoneNumber = document.getElementById('phone').value.trim();
+
+  // Geçerli mi kontrolü (sadece rakam girilmiş mi)
+  if (!/^\d+$/.test(phoneNumber)) {
+    alert("Lütfen sadece rakamlardan oluşan geçerli bir telefon numarası girin.");
+    return;
+  }
+
+  const fullNumber = `tel:${countryCode}${phoneNumber}`;
   const canvas = document.getElementById('qr-code');
-  QRCode.toCanvas(canvas, data, {
-    width: 256, // varsayılan 256 px (A4 için ideal)
+
+  QRCode.toCanvas(canvas, fullNumber, {
+    width: 256,
     margin: 2
   }, function (error) {
     if (error) console.error(error);

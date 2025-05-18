@@ -4,10 +4,18 @@ body {
   margin-top: 50px;
 }
 
-input {
+.phone-input {
+  margin-bottom: 20px;
+}
+
+select, input {
   padding: 10px;
   font-size: 16px;
-  width: 250px;
+}
+
+input {
+  width: 200px;
+  margin-left: 10px;
 }
 
 button {

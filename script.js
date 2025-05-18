@@ -21,7 +21,7 @@ function generateQR() {
   const canvas = document.getElementById('qr-code');
 
   QRCode.toCanvas(canvas, fullNumber, {
-    width: 512, // Daha büyük QR kod
+    width: 300, // Daha büyük QR kod
     margin: 2
   }, function (error) {
     if (error) console.error(error);

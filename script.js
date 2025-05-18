@@ -1,10 +1,19 @@
 function generateQR() {
   const countryCode = document.getElementById('country-code').value;
-  const phoneNumber = document.getElementById('phone').value.trim();
+  let phoneNumber = document.getElementById('phone').value;
 
-  // Geçerli mi kontrolü (sadece rakam girilmiş mi)
+  // Tüm boşlukları temizle
+  phoneNumber = phoneNumber.replace(/\s+/g, '');
+
+  // Sadece rakamlardan oluşmalı
   if (!/^\d+$/.test(phoneNumber)) {
-    alert("Lütfen sadece rakamlardan oluşan geçerli bir telefon numarası girin.");
+    alert("Lütfen geçerli bir telefon numarası giriniz (sadece rakam).");
+    return;
+  }
+
+  // Uzunluk kontrolü
+  if (phoneNumber.length !== 10) {
+    alert("Telefon numarası 10 haneli olmalıdır.");
     return;
   }
 
@@ -12,14 +21,14 @@ function generateQR() {
   const canvas = document.getElementById('qr-code');
 
   QRCode.toCanvas(canvas, fullNumber, {
-    width: 256,
+    width: 512, // Daha büyük QR kod
     margin: 2
   }, function (error) {
     if (error) console.error(error);
-    else console.log('QR kodu oluşturuldu!');
+    else console.log('QR kodu oluşturuldu:', fullNumber);
   });
 }
 
 function printQR() {
-  window.print();
+  window.print(); // Yazdırma penceresini açar
 }

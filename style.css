@@ -15,3 +15,31 @@ button {
   font-size: 16px;
   margin-left: 10px;
 }
+
+#qr-container {
+  margin-top: 40px;
+}
+
+/* Yazdırma stilleri */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #qr-container, #qr-container * {
+    visibility: visible;
+  }
+
+  #qr-container {
+    position: absolute;
+    top: 2cm;
+    left: 2cm;
+    width: 8cm;
+    height: 8cm;
+  }
+
+  canvas {
+    width: 8cm !important;
+    height: 8cm !important;
+  }
+}

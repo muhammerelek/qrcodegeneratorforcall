@@ -8,9 +8,14 @@
 </head>
 <body>
   <h1>📞 QR ile Telefon Arama</h1>
+
   <input type="text" id="phone" placeholder="+905451112233">
   <button onclick="generateQR()">QR Oluştur</button>
-  <canvas id="qr-code"></canvas>
+  <button onclick="printQR()">🖨️ Yazdır</button>
+
+  <div id="qr-container">
+    <canvas id="qr-code" width="256" height="256"></canvas>
+  </div>
 
   <script src="script.js"></script>
 </body>
